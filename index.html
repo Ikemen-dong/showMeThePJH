@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>최초공개</title>
+    <style>
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            font-size: 4em;
+            margin-bottom: 0.5em;
+        }
+        .countdown {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .image-space {
+            width: 80%;
+            height: auto;
+            margin: 0 auto;
+            border: 2px solid #ffffff;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>2025년 2월 17일 13:00 <br> PJH UNIVERSE 뮤비 <br> 최.초.공.개</h1>
+    <div class="countdown" id="countdown"></div>
+    <div class="image-space" id="image-space"><img src="IMG_0333.jpg"></div>
+    <script>
+        function countdown() {
+            const endDate = new Date('February 17, 2025 13:00:00').getTime();
+            const now = new Date().getTime();
+            const timeLeft = endDate - now;
+
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+            const milliseconds = Math.floor((timeLeft % 1000) / 1);
+
+            document.getElementById("countdown").innerHTML = `
+                남은시간: ${days}일 ${hours}시간 ${minutes}분 ${seconds.toString().padStart(2, '0')}초 ${milliseconds.toString().padStart(3, '0')}
+            `;
+
+            if (timeLeft < 0) {
+                document.getElementById("countdown").innerHTML = "이벤트가 종료되었습니다.";
+            }
+        }
+
+        setInterval(countdown, 100);
+    </script>
+</body>
+</html>
